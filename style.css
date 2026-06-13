@@ -671,8 +671,8 @@ footer p{
 
     .hero p{
         font-size:1rem;
-        min-height:65vh;
-        padding:40px 20px;
+        min-height:10vh;
+        padding:20px 20px;
     }
 
     section{
