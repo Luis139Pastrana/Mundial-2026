@@ -1,0 +1,596 @@
+/* =========================
+   RESET
+========================= */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#0a0f1f;
+    color:#ffffff;
+    overflow-x:hidden;
+}
+
+/* =========================
+   SCROLLBAR
+========================= */
+::-webkit-scrollbar{
+    width:10px;
+}
+
+::-webkit-scrollbar-track{
+    background:#0a0f1f;
+}
+
+::-webkit-scrollbar-thumb{
+    background:#1e40af;
+    border-radius:10px;
+}
+
+/* =========================
+   HERO
+========================= */
+.hero{
+    min-height:100vh;
+    background:
+    linear-gradient(
+        rgba(0,0,0,.75),
+        rgba(0,0,0,.85)
+    ),
+    url("imagenes/mundial-bg.webp");
+    background-size:cover;
+    background-position:center;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:20px;
+}
+
+.overlay{
+    max-width:850px;
+}
+
+.badge{
+    display:inline-block;
+    background:#dc2626;
+    padding:10px 20px;
+    border-radius:50px;
+    font-weight:600;
+    margin-bottom:20px;
+}
+
+.hero h1{
+    font-size:4rem;
+    font-weight:800;
+    margin-bottom:20px;
+    line-height:1.1;
+}
+
+.hero p{
+    font-size:1.2rem;
+    color:#d1d5db;
+    margin-bottom:35px;
+}
+
+.btn-principal{
+    display:inline-block;
+    text-decoration:none;
+    color:white;
+    background:linear-gradient(
+        45deg,
+        #2563eb,
+        #1d4ed8
+    );
+    padding:16px 40px;
+    border-radius:50px;
+    font-weight:700;
+    transition:.3s;
+}
+
+.btn-principal:hover{
+    transform:translateY(-4px);
+    box-shadow:0 10px 25px rgba(37,99,235,.4);
+}
+
+/* =========================
+   MENU
+========================= */
+.menu-rapido{
+    position:sticky;
+    top:0;
+    z-index:999;
+    background:#111827;
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    flex-wrap:wrap;
+    padding:15px;
+    border-bottom:1px solid rgba(255,255,255,.1);
+}
+
+.menu-rapido a{
+    color:white;
+    text-decoration:none;
+    background:#1f2937;
+    padding:12px 20px;
+    border-radius:30px;
+    transition:.3s;
+    font-weight:500;
+}
+
+.menu-rapido a:hover{
+    background:#2563eb;
+}
+
+/* =========================
+   SECCIONES GENERALES
+========================= */
+section{
+    padding:80px 8%;
+}
+
+section h2{
+    text-align:center;
+    margin-bottom:40px;
+    font-size:2rem;
+    font-weight:700;
+}
+
+/* =========================
+   CONTENEDORES DE PARTIDOS (GRID)
+========================= */
+#partidos-hoy,
+#proximos-partidos,
+#resultados-busqueda,
+.grid-partidos-grupo {
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap:20px;
+    width: 100%;
+}
+
+.partido{
+    background:#111827;
+    border-radius:20px;
+    padding:20px;
+    border-left:6px solid #2563eb;
+    transition:.3s;
+}
+
+.partido:hover{
+    transform:translateY(-4px);
+}
+
+.partido h3{
+    margin-bottom:10px;
+    font-size:1.3rem;
+}
+
+.partido p{
+    color:#d1d5db;
+    margin-bottom: 5px;
+}
+
+/* =========================
+   ESTADOS DE PARTIDOS (CORREGIDO GLOBAL)
+========================= */
+.leyenda-estados{
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    flex-wrap:wrap;
+    margin-bottom:35px;
+}
+
+.badge-finalizado,
+.badge-vivo,
+.badge-proximo{
+    padding:8px 16px;
+    border-radius:30px;
+    font-size:14px;
+    font-weight:600;
+}
+
+.badge-finalizado{ background:#ef4444; }
+.badge-vivo{ background:#22c55e; }
+.badge-proximo{ background:#2563eb; }
+
+.estado{
+    display:inline-block;
+    padding:6px 12px;
+    border-radius:20px;
+    font-size:12px;
+    font-weight:700;
+    margin-bottom:12px;
+}
+
+.finalizado .estado{ background:#ef4444; color:white; }
+.en-vivo .estado{ background:#22c55e; color:white; }
+.proximamente .estado{ background:#2563eb; color:white; }
+
+.finalizado{
+    opacity:.6;
+}
+.finalizado h3{
+    text-decoration:line-through;
+}
+.en-vivo{
+    border-left:6px solid #22c55e !important;
+    box-shadow: 0 0 15px rgba(34, 197, 94, 0.2);
+}
+.proximamente{
+    border-left:6px solid #2563eb !important;
+}
+
+/* =========================
+   CONTADOR (CUENTA REGRESIVA)
+========================= */
+/* =========================================
+   CENTRAR EL TEMPORIZADOR (COUNTDOWN)
+========================================= */
+#countdown.countdown-wrapper {
+    display: flex;             /* Activa Flexbox */
+    flex-direction: column;    /* Ordena el contenido hacia abajo (Título, reloj, etc.) */
+    align-items: center;       /* Centra el contenido internamente de forma horizontal */
+    justify-content: center;   /* Centra el contenido internamente de forma vertical */
+    text-align: center;        /* Alinea los textos al centro */
+    
+    padding: 40px 20px;
+    background: #111827;       /* Fondo oscuro alineado con tu paleta */
+    border-radius: 20px;       /* Bordes redondeados elegantes */
+    margin: 30px auto;         /* El "auto" a los lados hace que todo el bloque se centre en la página */
+    max-width: 650px;          /* Evita que se estire demasiado en monitores grandes */
+    width: 90%;                /* Se adapta perfectamente a pantallas de celulares */
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* =========================================
+   ESTILOS DE LAS BANDERAS EN TARJETAS (LOCAL)
+========================================= */
+.enfrentamiento-marcador {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Centra los equipos dentro de la tarjeta */
+    gap: 15px;
+    margin-bottom: 15px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05); /* Línea divisoria fina */
+}
+
+.equipo-bloque {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.bandera-icon {
+    width: 35px;             /* Tamaño ideal para que luzcan tus fotos .png */
+    height: 22px;            /* Proporción estándar de bandera */
+    object-fit: cover;       /* Evita que las imágenes se estiren o deformen */
+    border-radius: 4px;      /* Bordes ligeramente redondeados */
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4); /* Sombra para resaltar sobre el fondo oscuro */
+    border: 1px solid rgba(255, 255, 255, 0.1); /* Borde sutil */
+}
+
+.nombre-equipo {
+    font-size: 1.2rem;
+    font-weight: 700;
+    font-family: 'Poppins', sans-serif;
+    color: #ffffff;
+    letter-spacing: 0.5px;
+}
+
+.vs-separador {
+    font-size: 0.85rem;
+    font-weight: 800;
+    color: #2563eb;          /* El azul brillante de tu marca */
+    background: rgba(37, 99, 235, 0.15); /* Fondo suave estilo badge */
+    padding: 3px 7px;
+    border-radius: 5px;
+}
+
+/* Forzar que todas las listas de partidos mantengan el contenido centrado */
+#partidos-hoy .enfrentamiento-marcador,
+#proximos-partidos .enfrentamiento-marcador,
+#resultados-busqueda .enfrentamiento-marcador,
+#partidos-grupo .enfrentamiento-marcador {
+    justify-content: center;
+}
+
+.partido-titulo {
+    font-size: 1.6rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: #ffffff;
+}
+
+.reloj-digital {
+    font-size: 2.3rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    margin: 15px 0;
+    color: #facc15;
+}
+
+.tiempo-bloque b {
+    font-size: 2.5rem;
+}
+
+.partido-detalles {
+    font-size: 0.9rem;
+    opacity: 0.7;
+    display: block;
+    margin-top: 10px;
+}
+
+/* =========================
+   BUSCADOR Y RESULTADOS
+========================= */
+.buscador{
+    text-align:center;
+}
+
+.buscador input{
+    width:100%;
+    max-width:600px;
+    padding:18px;
+    border:none;
+    outline:none;
+    border-radius:15px;
+    font-size:16px;
+    background: #111827;
+    color: white;
+    border: 1px solid rgba(255,255,255,0.1);
+    margin-bottom: 30px;
+}
+
+.buscador input:focus{
+    box-shadow:0 0 20px rgba(37,99,235,.5);
+    background: #1f2937;
+}
+
+/* =========================
+   PLATAFORMAS
+========================= */
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
+}
+
+.card{
+    background:#111827;
+    border-radius:25px;
+    padding:25px;
+    text-align:center;
+    transition:.3s;
+    border:1px solid rgba(255,255,255,.05);
+}
+
+.card:hover{
+    transform:translateY(-8px);
+}
+
+.card img{
+    width:100px;
+    height:100px;
+    object-fit:contain;
+    margin-bottom:15px;
+}
+
+.card h3{
+    margin-bottom:10px;
+}
+
+.card p{
+    color:#d1d5db;
+    margin-bottom:20px;
+}
+
+.card a{
+    display:inline-block;
+    text-decoration:none;
+    color:white;
+    background:#16a34a;
+    padding:12px 25px;
+    border-radius:50px;
+    font-weight:600;
+    transition: .3s;
+}
+
+.card a:hover{
+    background:#15803d;
+}
+
+/* =========================
+   GRUPOS Y BOTONES
+========================= */
+.cards-grupos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 12px;
+    margin-bottom: 30px;
+}
+
+.grupo-btn{
+    background:#111827;
+    color:white;
+    border:1px solid rgba(255,255,255,0.05);
+    padding:15px 10px;
+    border-radius:12px;
+    cursor:pointer;
+    font-weight:700;
+    transition:.3s;
+    text-align: center;
+}
+
+.grupo-btn:hover,
+.grupo-btn.active{
+    background:#2563eb;
+    color: white;
+    transform:translateY(-3px);
+    box-shadow: 0 6px 15px rgba(37,99,235,0.3);
+}
+
+.titulo-grupo-activo {
+    text-align: center;
+    margin: 20px 0;
+    font-size: 1.4rem;
+    color: #facc15;
+}
+
+#partidos-grupo{
+    margin-top:30px;
+}
+
+/* =========================
+   CTA FINAL
+========================= */
+.cta{
+    text-align:center;
+    background:linear-gradient(
+        135deg,
+        #1e3a8a,
+        #1d4ed8
+    );
+}
+
+.cta p{
+    margin-bottom:30px;
+    color:#e5e7eb;
+}
+
+/* =========================
+   FOOTER
+========================= */
+footer{
+    background:#030712;
+    text-align:center;
+    padding:50px 20px;
+}
+
+footer h3{
+    margin-bottom:10px;
+}
+
+footer p{
+    color:#9ca3af;
+    margin-top:8px;
+}
+
+/* =========================
+   WHATSAPP
+========================= */
+.whatsapp{
+    position:fixed;
+    bottom:25px;
+    right:25px;
+    width:70px;
+    height:70px;
+    background:#25D366;
+    color:white;
+    border-radius:50%;
+    text-decoration:none;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:2rem;
+    z-index:999;
+    box-shadow:0 8px 25px rgba(0,0,0,.4);
+    transition:.3s;
+}
+
+.whatsapp:hover{
+    transform:scale(1.1);
+}
+
+/* =========================
+   LOADING Y MENSAJES
+========================= */
+.loading, .no-partidos{
+    text-align:center;
+    color:#9ca3af;
+    grid-column: 1 / -1; /* Ocupa todo el ancho si está en formato Grid */
+    padding: 20px;
+}
+
+/* =========================
+   ANIMACIONES
+========================= */
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(20px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+.partido,
+.card{
+    animation:fadeUp .5s ease forwards;
+}
+
+/* =========================
+   RESPONSIVE (SOLO PARA CAMBIOS EN MÓVILES)
+========================= */
+@media(max-width:768px){
+    .hero h1{
+        font-size:2.5rem;
+    }
+
+    /* COUNTDOWN RESPONSIVE */
+#countdown.countdown-wrapper{
+    max-width: 95%;
+    padding: 20px 12px;
+}
+
+.partido-titulo{
+    font-size: 1.1rem;
+}
+
+.reloj-digital{
+    font-size: 1.3rem;
+    letter-spacing: 1px;
+}
+
+.tiempo-bloque b{
+    font-size: 1.5rem;
+}
+
+.partido-detalles{
+    font-size: 0.75rem;
+}
+
+    .hero p{
+        font-size:1rem;
+    }
+
+    section{
+        padding:60px 5%;
+    }
+
+    .reloj-digital{
+        font-size:1.8rem;
+    }
+    
+    .tiempo-bloque b {
+        font-size: 2rem;
+    }
+
+    .menu-rapido{
+        gap:8px;
+    }
+
+    .menu-rapido a{
+        font-size:13px;
+        padding:10px 14px;
+    }
+}
