@@ -552,6 +552,12 @@ footer p{
     padding: 20px 12px;
 }
 
+   .hero{
+        min-height:65vh;
+        padding:40px 20px;
+    }
+
+
 .partido-titulo{
     font-size: 1.1rem;
 }
