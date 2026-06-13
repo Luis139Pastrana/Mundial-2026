@@ -691,6 +691,16 @@ footer p{
         gap:8px;
     }
 
+    .fixtures-grid {
+        /* Bajamos el mínimo a 240px para que quepa en pantallas súper angostas */
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 15px;
+    }
+    
+    .fixtures-fisicos h2 {
+        font-size: 1.6rem;
+    }
+
     .menu-rapido a{
         font-size:13px;
         padding:10px 14px;
