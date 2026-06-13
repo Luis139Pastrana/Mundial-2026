@@ -52,7 +52,7 @@ const partidos = [
     { fecha: "2026-06-11", hora: "22:00", local: "COR", visitante: "CZE", grupo: "A", fase: "Grupos" },
     { fecha: "2026-06-18", hora: "12:00", local: "CZE", visitante: "SUD", grupo: "A", fase: "Grupos" },
     { fecha: "2026-06-18", hora: "21:00", local: "MEX", visitante: "COR", grupo: "A", fase: "Grupos" },
-    { fecha: "2026-06-24", hora: "21:00", local: "SUD", visitante: "COR", group: "A", fase: "Grupos" },
+    { fecha: "2026-06-24", hora: "21:00", local: "SUD", visitante: "COR", grupo: "A", fase: "Grupos" },
     { fecha: "2026-06-24", hora: "21:00", local: "CZE", visitante: "MEX", grupo: "A", fase: "Grupos" },
 
     // GRUPO B
@@ -109,7 +109,7 @@ const partidos = [
     { fecha: "2026-06-21", hora: "12:00", local: "ESP", visitante: "ARA", grupo: "H", fase: "Grupos" },
     { fecha: "2026-06-21", hora: "18:00", local: "URU", visitante: "CAB", grupo: "H", fase: "Grupos" },
     { fecha: "2026-06-26", hora: "20:00", local: "CAB", visitante: "ARA", grupo: "H", fase: "Grupos" },
-    { fecha: "2026-06-26", hora: "20:00", local: "URU", visitante: "ESP", group: "H", fase: "Grupos" },
+    { fecha: "2026-06-26", hora: "20:00", local: "URU", visitante: "ESP", grupo: "H", fase: "Grupos" },
 
     // GRUPO I
     { fecha: "2026-06-16", hora: "15:00", local: "FRA", visitante: "SEN", grupo: "I", fase: "Grupos" },
@@ -261,6 +261,7 @@ botonesGrupos.forEach(boton => {
 function actualizarReloj() {
     const ahora = new Date();
     
+    
     // Filtrar partidos futuros
     const futuros = partidos.filter(p => {
         const pInicio = new Date(`${p.fecha.replace(/-/g, '/')} ${p.hora}`);
@@ -302,6 +303,8 @@ function actualizarReloj() {
     } else {
         countdownContainer.innerHTML = "<div class='finalizado-msg'>¡Fase de grupos concluida! 🏆</div>";
     }
+
+    
 }
 
 // =====================================
@@ -350,6 +353,7 @@ function actualizarListas() {
         }).join('');
     }
 
+    
     // B. Listar partidos de Mañana
     const partidosManana = partidos.filter(p => p.fecha === fechaManana);
     if (partidosManana.length === 0) {
@@ -374,6 +378,18 @@ function actualizarListas() {
             </div>
         `).join('');
     }
+}
+
+function abrirFixture(imagen){
+
+    document.getElementById("imagenFixture").src = imagen;
+
+    document.getElementById("modalFixture").style.display = "flex";
+}
+
+function cerrarFixture(){
+
+    document.getElementById("modalFixture").style.display = "none";
 }
 
 // =====================================
